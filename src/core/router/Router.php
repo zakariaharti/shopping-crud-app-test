@@ -27,7 +27,7 @@ class Router
        }
      });
 
-     
+
      $httpMethod = $_SERVER['REQUEST_METHOD'];
      $uri = $_SERVER['REQUEST_URI'];
 
@@ -44,7 +44,7 @@ class Router
         break;
         case \FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
            $allowedMethods = $routeInfo[1];
-           throw new HttpMethodNotAllowedException('Method not allowed Error :'.$allowedMethods);
+           throw new HttpMethodNotAllowedException('Method not allowed Error');
            break;
         case \FastRoute\Dispatcher::FOUND:
            $handler = $routeInfo[1];
