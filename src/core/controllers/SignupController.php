@@ -20,7 +20,7 @@ class SignupController extends Controller {
 
     echo json_encode([
       'message' => 'hello world',
-      'params' => $params
+      'params' => input('username')
     ]);
   }
 }

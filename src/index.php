@@ -11,6 +11,9 @@ $configs = require __DIR__.'/config.php';
 // Application routes
 $routes = require __DIR__.'/routes.php';
 
+// helpers functions
+require __DIR__.'/helpers/helpers.php';
+
 // Run the Application
 
 (new \App\core\app\Application($configs, $routes))->run();
