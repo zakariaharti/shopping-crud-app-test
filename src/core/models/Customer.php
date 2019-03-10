@@ -52,7 +52,7 @@ class Customer implements CommonModel
   function usernameExists($params){
 
     // query to check if email exists
-    $query = "SELECT id, username FROM customers WHERE username = ?";
+    $query = "SELECT username FROM customers WHERE username = ?";
 
     $stmt = $this->_pdo->prepare( $query );
 
