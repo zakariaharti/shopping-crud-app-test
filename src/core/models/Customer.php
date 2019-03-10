@@ -13,8 +13,7 @@ class Customer implements CommonModel
   private $_pdo;
   private static $_sqlTabelQuery = '
     CREATE TABLE customers (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      username VARCHAR NOT NULL UNIQUE,
+      username VARCHAR NOT NULL PRIMARY KEY UNIQUE,
       password CHAR NOT NULL,
       name VARCHAR NOT NULL,
       addresse VARCHAR NOT NULL,
