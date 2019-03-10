@@ -6,7 +6,7 @@ use App\core\models\Customer;
 
 class SignupController extends Controller {
   public function execute(\PDO $db, $params = []) {
-    $customer = new Customer($db);
+    /*$customer = new Customer($db);
 
     if ($customer->usernameExists($params)) {
       throw new \Exception("The provided username {$params['username']} is already exists");
@@ -16,6 +16,11 @@ class SignupController extends Controller {
 
     echo json_encode([
       'success' => 'you have been successfuly registered'
+    ]);*/
+
+    echo json_encode([
+      'message' => 'hello world',
+      'params' => $params
     ]);
   }
 }
