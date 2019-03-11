@@ -16,7 +16,7 @@ class ProductListController extends Controller {
       ]);
     }else {
       echo json_encode([
-        'error' => 'connot fecth products'
+        'products' => 'none of products found'
       ]);
     }
   }
