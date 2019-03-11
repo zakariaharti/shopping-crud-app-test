@@ -2,8 +2,8 @@
 
 return [
   [
-    'method' => 'GET',
-    'path' => '/login/{name}',
+    'method' => 'POST',
+    'path' => '/login',
     'handler' => 'LoginController'
   ],
   [
