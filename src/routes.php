@@ -10,5 +10,10 @@ return [
     'method' => 'POST',
     'path' => '/signup',
     'handler' => 'SignupController'
+  ],
+  [
+    'method' => 'POST',
+    'path' => '/products/create',
+    'handler' => 'ProductCreateController'
   ]
 ];

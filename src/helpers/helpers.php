@@ -24,7 +24,7 @@ function hashPassword($pass)
   return password_hash($pass, PASSWORD_DEFAULT);
 }
 
-function getJwtToken($data)
+function getJwtToken(array $data)
 {
   // variables used for jwt
   $key = "secret_key";
@@ -38,9 +38,7 @@ function getJwtToken($data)
     "aud" => $aud,
     "iat" => $iat,
     "nbf" => $nbf,
-    "data" => array(
-       "username" => $data['username'],
-    )
+    "data" => $data
   );
 
   // set response code
@@ -50,47 +48,6 @@ function getJwtToken($data)
   return JWT::encode($token, $key);
 }
 
-function authenticate($data)
-{
-  $jwt = isset( $data["jwt"] ) ? $data["jwt"] : "";
-
-  // if jwt is not empty
-  if($jwt){
-
-    // if decode succeed, show user details
-    try {
-        // decode jwt
-        $decoded = JWT::decode($jwt, 'secret_key', array('HS256'));
-
-        // set response code
-        http_response_code(200);
-
-        // show user details
-        echo json_encode(array(
-            "message" => "Access granted.",
-            "data" => $decoded->data
-        ));
-
-    }catch (\Exception $e){
-      // set response code
-      http_response_code(401);
-
-      // tell the user access denied  & show error message
-      echo json_encode(array(
-        "message" => "Access denied.",
-        "error" => $e->getMessage()
-      ));
-    }
-
-    // catch will be here
-  } else{
-
-    // set response code
-    http_response_code(401);
-
-    // tell the user access denied
-    echo json_encode(array("message" => "Access denied."));
-  }
-
-// error if jwt is empty will be here
+function isAuthenticated($jwt){
+  return JWT::decode($jwt, 'secret_key', array('HS256'));
 }

@@ -18,7 +18,7 @@ class LoginController extends Controller {
     if (!isEmptyValues($data)) {
       if ($customer->passwordMatch($data)) {
         // generate jwt
-        $jwt = getJwtToken($data);
+        $jwt = getJwtToken(['username' => $data['username']]);
         echo json_encode(
                array(
                   "message" => "Successful login.",
