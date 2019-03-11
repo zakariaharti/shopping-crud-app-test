@@ -3,16 +3,16 @@
 // Application Entry point
 
 // Composer autoload mechanism
-require dirname(__DIR__).'/vendor/autoload.php';
+require 'vendor/autoload.php';
 
 // Configuration file
-$configs = require __DIR__.'/config.php';
+$configs = require 'src/config.php';
 
 // Application routes
-$routes = require __DIR__.'/routes.php';
+$routes = require 'src/routes.php';
 
 // helpers functions
-require __DIR__.'/helpers/helpers.php';
+require 'src/helpers/helpers.php';
 
 // Run the Application
 
