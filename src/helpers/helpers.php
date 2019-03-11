@@ -16,3 +16,8 @@ function isEmptyValues($arrs, $length = 1)
     return false;
   }
 }
+
+function hashPassword($pass)
+{
+  return password_hash($pass, PASSWORD_DEFAULT);
+}

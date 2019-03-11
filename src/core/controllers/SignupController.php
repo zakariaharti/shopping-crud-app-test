@@ -12,7 +12,7 @@ class SignupController extends Controller {
     $data = [
       'username' => input('username'),
       'name' => input('name'),
-      'password' => input('password'),
+      'password' => hashPassword(input('password')),
       'country' => input('country'),
       'addresse' => input('username'),
     ];
