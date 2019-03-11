@@ -17,11 +17,12 @@ class SignupController extends Controller {
       'addresse' => input('username'),
     ];
 
-    if (!isEmptyValues($data) && !$customer->usernameExists($data)) {
-      throw new \Exception("The provided username {$data['username']} is already exists");
+    if (!isEmptyValues($data)) {
+      if ($customer->usernameExists($data)) {
+        throw new \Exception("The provided username {$data['username']} is already exists");
+      }
+      $customer->createCustomer($data);
     }
-
-    $customer->createCustomer($data);
 
     echo json_encode([
       'message' => 'you have been successfuly registered'
