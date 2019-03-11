@@ -48,4 +48,12 @@ class Product implements CommonModel
     }
     return false;
   }
+
+  function fetchProducts()
+  {
+    $sql = "SELECT * FROM products";
+    $stmt = $this->_pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FECTH_ASSOC);
+  }
 }

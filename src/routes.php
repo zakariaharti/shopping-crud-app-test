@@ -13,7 +13,12 @@ return [
   ],
   [
     'method' => 'POST',
-    'path' => '/products/create',
+    'path' => '/product/create',
     'handler' => 'ProductCreateController'
+  ],
+  [
+    'method' => 'GET',
+    'path' => '/product/list',
+    'handler' => 'ProductListController'
   ]
 ];
