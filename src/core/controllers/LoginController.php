@@ -15,31 +15,10 @@ class LoginController extends Controller {
       'password' => input('password'),
     ];
 
-
-    // variables used for jwt
-    $key = "secret_key";
-    $iss = "http://example.org";
-    $aud = "http://example.com";
-    $iat = 1356999524;
-    $nbf = 1357000000;
-
     if (!isEmptyValues($data)) {
       if ($customer->passwordMatch($data)) {
-        $token = array(
-          "iss" => $iss,
-          "aud" => $aud,
-          "iat" => $iat,
-          "nbf" => $nbf,
-          "data" => array(
-             "username" => $data['username'],
-          )
-        );
-
-        // set response code
-        http_response_code(200);
-
         // generate jwt
-        $jwt = JWT::encode($token, $key);
+        $jwt = getJwtToken($data);
         echo json_encode(
                array(
                   "message" => "Successful login.",
