@@ -58,10 +58,15 @@ class Customer implements CommonModel
     $res->bindParam(':username', $params['username']);
     $res->execute();
 
-    if($res->rowCount() > 0){
-        return true;
-    }
+    return $res->fetch(PDO::FETCH_OBJ);
+  }
 
+  public function passwordMatch($params){
+    if ($res = $this->usernameExists($params)) {
+      if (password_verify($params['password'], $res->password)) {
+        return true;
+      }
+    }
     return false;
   }
 }
