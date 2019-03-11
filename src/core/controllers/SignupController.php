@@ -17,7 +17,7 @@ class SignupController extends Controller {
       'addresse' => input('username'),
     ];
 
-    if ($customer->usernameExists($data)) {
+    if (!$customer->usernameExists($data)) {
       throw new \Exception("The provided username {$data['username']} is already exists");
     }
 

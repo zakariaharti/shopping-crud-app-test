@@ -36,11 +36,11 @@ class Customer implements CommonModel
   {
     $sql = "INSERT INTO customers VALUES(:username,:password,:name,:addresse,:country)";
     $stmt = $this->_pdo->prepare($sql);
-    $stmt->bindParam(':username',htmlentities($params['username']));
-    $stmt->bindParam(':name',htmlentities($params['name']));
-    $stmt->bindParam(':addresse',htmlentities($params['addresse']));
-    $stmt->bindParam(':country',htmlentities($params['country']));
-    $stmt->bindParam(':password', password_hash($params['password'], PASSWORD_BCRYPT));
+    $stmt->bindParam(':username',$params['username']);
+    $stmt->bindParam(':name',$params['name']);
+    $stmt->bindParam(':addresse',$params['addresse']);
+    $stmt->bindParam(':country',$params['country']);
+    $stmt->bindParam(':password', $params['password']);
 
     if($stmt->execute()){
        return true;
@@ -52,12 +52,13 @@ class Customer implements CommonModel
   function usernameExists($params){
 
     // query to check if email exists
-    $query = "SELECT username FROM customers WHERE username = {$params['username']}";
+    $query = "SELECT username FROM customers WHERE username = :username";
 
-    // get number of rows
-    $res = $this->_pdo->query($query);
+    $res = $this->_pdo->prepare($query);
+    $res->bindParam(':username', $params['username']);
+    $res->execute();
 
-    if($res->fetchColumn() > 0){
+    if($res->rowCount() > 0){
         return true;
     }
 
