@@ -20,5 +20,10 @@ return [
     'method' => 'GET',
     'path' => '/product/list',
     'handler' => 'ProductListController'
+  ],
+  [
+    'method' => 'POST',
+    'path' => '/product/delete',
+    'handler' => 'ProductDeleteController'
   ]
 ];

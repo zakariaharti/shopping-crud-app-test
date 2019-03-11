@@ -56,4 +56,12 @@ class Product implements CommonModel
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  function deleteProduct($data)
+  {
+    $sql = "DELETE FROM products WHERE id = ?";
+    $stmt = $this->_pdo->prepare($sql);
+    $stmt->bindParam(1, $data['id']);
+    return $stmt->execute();
+  }
 }
