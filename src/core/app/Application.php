@@ -39,7 +39,13 @@ class Application
       $router = new Router($this->_routes);
       $router->handle($connection);
     } catch (Throwable $e) {
-
+      echo json_encode([
+        "error" => [
+          "message" => $e->getMessage(),
+          "line" => $e->getLine(),
+          "file" => $e->getFile()
+        ]
+      ]);
     }
   }
 }

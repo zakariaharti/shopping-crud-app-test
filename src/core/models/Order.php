@@ -44,7 +44,7 @@ class Order implements CommonModel
 
   function fetchProducts($data)
   {
-    $sql = "SELECT * FROM orders WHERE customer_id = ?";
+    $sql = "SELECT * FROM products";
     $stmt = $this->_pdo->prepare($sql);
     $stmt->bindParam(1, $data['username']);
     $stmt->execute();

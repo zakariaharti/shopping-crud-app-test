@@ -37,6 +37,7 @@ class Product implements CommonModel
   public function createProduct($data)
   {
     $id = random_int(500,100000);
+    $order = "order";
     $sql = "INSERT INTO products (id,title,description,price,inventory,order_id) VALUES(?,?,?,?,?,?)";
     $stmt = $this->_pdo->prepare($sql);
     $stmt->bindParam(1, $id);
@@ -44,7 +45,7 @@ class Product implements CommonModel
     $stmt->bindParam(3, $data['description']);
     $stmt->bindParam(4, $data['price']);
     $stmt->bindParam(5, $data['inventory']);
-    $stmt->bindParam(6, "order");
+    $stmt->bindParam(6, $order);
 
     if ($stmt->execute()) {
       return true;
