@@ -37,7 +37,7 @@ return [
     'handler' => 'ProductReadController'
   ],
   [
-    'method' => 'GET',
+    'method' => 'POST',
     'path' => '/order/list',
     'handler' => 'OrderListController'
   ],
