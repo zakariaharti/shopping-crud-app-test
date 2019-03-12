@@ -64,4 +64,25 @@ class Product implements CommonModel
     $stmt->bindParam(1, $data['id']);
     return $stmt->execute();
   }
+
+  function updateProduct($data)
+  {
+    $sql = "
+      UPDATE products
+      SET title = ?, description = ?, price = ?, inventory = ?
+      WHERE id = ?
+    ";
+
+    $stmt = $this->_pdo->prepare($sql);
+    $stmt->bindParam(1, $data['title']);
+    $stmt->bindParam(2, $data['description']);
+    $stmt->bindParam(3, $data['price']);
+    $stmt->bindParam(4, $data['inventory']);
+    $stmt->bindParam(5, $data['id']);
+
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
+  }
 }

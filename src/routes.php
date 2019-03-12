@@ -25,5 +25,10 @@ return [
     'method' => 'POST',
     'path' => '/product/delete',
     'handler' => 'ProductDeleteController'
+  ],
+  [
+    'method' => 'POST',
+    'path' => '/product/update',
+    'handler' => 'ProductUpdateController'
   ]
 ];
