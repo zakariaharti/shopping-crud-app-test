@@ -54,8 +54,8 @@ class Product implements CommonModel
   {
     $sql = "UPDATE products SET order_id = ? WHERE id = ?";
     $stmt = $this->_pdo->prepare($sql);
-    $stmt->bindParam(2, $data['orderId']);
-    $stmt->bindParam(3, $data['productId']);
+    $stmt->bindParam(1, $data['orderId']);
+    $stmt->bindParam(2, $data['productId']);
 
     if ($stmt->execute()) {
       return true;
