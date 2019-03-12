@@ -18,8 +18,7 @@ class Product implements CommonModel
       title VARCHAR NOT NULL,
       description VARCHAR NOT NULL,
       price VARCHAR NOT NULL,
-      inventory CHAR NOT NULL,
-      order_id CHAR NULL
+      inventory CHAR NOT NULL
     )
   ';
 
@@ -36,13 +35,15 @@ class Product implements CommonModel
 
   public function createProduct($data)
   {
-    $sql = "INSERT INTO products VALUES(?,?,?,?,?)";
+    //$id = random_int(500,100000);
+    $sql = "INSERT INTO products (id,title,description,price,inventory) VALUES(?,?,?,?,?)";
     $stmt = $this->_pdo->prepare($sql);
-    $stmt->bindParam(1, random_int(500,100000));
+    $stmt->bindParam(1, 500);
     $stmt->bindParam(2, $data['title']);
     $stmt->bindParam(3, $data['description']);
     $stmt->bindParam(4, $data['price']);
     $stmt->bindParam(5, $data['inventory']);
+    //$stmt->bindParam(6, "order");
 
     if ($stmt->execute()) {
       return true;
