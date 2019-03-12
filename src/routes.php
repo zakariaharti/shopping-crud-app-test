@@ -50,10 +50,5 @@ return [
     'method' => 'POST',
     'path' => '/order/confirm/{id}',
     'handler' => 'OrderConfirmController'
-  ],
-  [
-    'method' => 'POST',
-    'path' => '/order/close',
-    'handler' => 'OrderCloseController'
   ]
 ];
