@@ -2,6 +2,7 @@
 
 namespace App\core\app;
 
+use Throwable;
 use App\core\db\Connector;
 use App\core\router\Router;
 
@@ -29,12 +30,16 @@ class Application
   }
 
   public function run() {
-    // setup database connection
-    $db = Connector::getInstance();
-    $connection = $db->connect($this->_configs);
+    try {
+      // setup database connection
+      $db = Connector::getInstance();
+      $connection = $db->connect($this->_configs);
 
-    // setup routes
-    $router = new Router($this->_routes);
-    $router->handle($connection);
+      // setup routes
+      $router = new Router($this->_routes);
+      $router->handle($connection);
+    } catch (Throwable $e) {
+
+    }
   }
 }
