@@ -30,5 +30,10 @@ return [
     'method' => 'POST',
     'path' => '/product/update',
     'handler' => 'ProductUpdateController'
+  ],
+  [
+    'method' => 'GET',
+    'path' => '/product/item/{id}',
+    'handler' => 'ProductReadController'
   ]
 ];
