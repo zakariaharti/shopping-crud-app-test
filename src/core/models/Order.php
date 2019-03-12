@@ -14,9 +14,7 @@ class Order implements CommonModel
   private static $_sqlTabelQuery = '
     CREATE TABLE IF NOT EXISTS orders (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      product_id INTEGER NOT NULL,
-      customer_id INTEGER NOT NULL,
-      status VARCHAR
+      username INTEGER NOT NULL
     )
   ';
 
@@ -29,6 +27,19 @@ class Order implements CommonModel
   public function createTables(PDO $db){
     $count = $db->exec(self::$_sqlTabelQuery);
     return $count;
+  }
+
+  public function createOrder($data)
+  {
+    $sql = "INSERT INTO orders VALUES(?,?)";
+    $stmt = $this->_pdo->prepare($sql);
+    $stmt->bindParam(1, $data['orderId']);
+    $stmt->bindParam(2, $data['username']);
+
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
   }
 
   function fetchProducts($data)

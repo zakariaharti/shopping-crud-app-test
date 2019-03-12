@@ -48,7 +48,7 @@ return [
   ],
   [
     'method' => 'POST',
-    'path' => '/order/confirm',
+    'path' => '/order/confirm/{id}',
     'handler' => 'OrderConfirmController'
   ],
   [

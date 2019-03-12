@@ -18,7 +18,8 @@ class Product implements CommonModel
       title VARCHAR NOT NULL,
       description VARCHAR NOT NULL,
       price VARCHAR NOT NULL,
-      inventory CHAR NOT NULL
+      inventory CHAR NOT NULL,
+      order_id CHAR NULL
     )
   ';
 
@@ -42,6 +43,19 @@ class Product implements CommonModel
     $stmt->bindParam(3, $data['description']);
     $stmt->bindParam(4, $data['price']);
     $stmt->bindParam(5, $data['inventory']);
+
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
+  }
+
+  public function createOrder($data)
+  {
+    $sql = "UPDATE products SET order_id = ? WHERE id = ?";
+    $stmt = $this->_pdo->prepare($sql);
+    $stmt->bindParam(2, $data['orderId']);
+    $stmt->bindParam(3, $data['productId']);
 
     if ($stmt->execute()) {
       return true;
