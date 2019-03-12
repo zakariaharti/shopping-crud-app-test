@@ -10,6 +10,7 @@ use App\core\interfaces\CommonModel;
  */
 class Order implements CommonModel
 {
+  private $_pdo;
   private static $_sqlTabelQuery = '
     CREATE TABLE IF NOT EXISTS orders (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -21,6 +22,7 @@ class Order implements CommonModel
 
   function __construct($db)
   {
+    $this->_pdo = $db;
     $this->createTables($db);
   }
 
