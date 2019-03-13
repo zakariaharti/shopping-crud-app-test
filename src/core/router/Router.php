@@ -5,8 +5,11 @@ namespace App\core\router;
 use PDO;
 use ReflectionClass;
 use App\core\exceptions\{HttpMethodNotAllowedException, HttpNotFoundException};
+
 /**
+ * Router handling
  *
+ * @author zakaria harti
  */
 class Router
 {

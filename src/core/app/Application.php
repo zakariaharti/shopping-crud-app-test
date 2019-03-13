@@ -7,7 +7,9 @@ use App\core\db\Connector;
 use App\core\router\Router;
 
 /**
+ * The entry point application
  *
+ * @author zakaria harti
  */
 class Application
 {

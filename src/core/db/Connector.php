@@ -5,8 +5,11 @@ namespace App\core\db;
 use PDO;
 use PDOException;
 use App\core\exceptions\DBConnectionException;
+
 /**
- * connect to sqlite database
+ * The Connector to Sqlite database
+ *
+ * @author zakaria harti
  */
 class Connector
 {
