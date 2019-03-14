@@ -3,6 +3,11 @@
 ## Prerequisites
 - PHP <=7.1.8
 - Composer
+## Features
+- CRUD for products
+- API authentication via [jwt](https://jwt.io/)
+- Integration tests usign [codeception](https://codeception.com)
+- MVC pattern
 ## API Endpoints
 | path | method | body | decsription |
 |------|--------|------|-------------|
