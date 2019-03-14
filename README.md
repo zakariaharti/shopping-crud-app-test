@@ -1,4 +1,5 @@
 # shopping CRUD application usign PHP
+> NOTE: still in Development
 
 ## Prerequisites
 - PHP <=7.1.8
